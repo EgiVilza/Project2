@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/EgiVilza/Project2/issues"
   },
-  "homepage": "https://github.com/EgiVilza/Project2#readme"
+  "homepage": "https://github.com/EgiVilza/Project2#readme",
+  "dependencies": {
+    "eslint": "^7.20.0"
+  }
 }
