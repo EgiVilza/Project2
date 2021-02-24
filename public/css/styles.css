@@ -14,7 +14,7 @@ body {
 
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: url("../Images/blackjack_background.jpg");
+  background-image: url("../Images/blackjack_background2.jpg");
   /* Set a specific height */
   height: 50%;
   /* Position and center the image to scale nicely on all screens */
@@ -32,5 +32,7 @@ body {
 
 .placeBetButton {
   width: 130px;
+  position: absolute;
+  margin: 50%;
 }
 /*# sourceMappingURL=styles.css.map */
