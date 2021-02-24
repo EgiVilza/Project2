@@ -1,0 +1,36 @@
+#scoreBoardLink {
+  position: absolute;
+  right: 0px;
+  margin-right: 50px;
+}
+
+#homePageLink {
+  margin-left: 50px;
+}
+
+body {
+  color: green;
+}
+
+.hero-image {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: url("../Images/blackjack_background.jpg");
+  /* Set a specific height */
+  height: 50%;
+  /* Position and center the image to scale nicely on all screens */
+  width: 100%;
+  height: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.betAmountButton {
+  width: 80px;
+}
+
+.placeBetButton {
+  width: 130px;
+}
+/*# sourceMappingURL=styles.css.map */
