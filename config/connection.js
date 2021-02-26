@@ -1,3 +1,4 @@
+// Set up MySQL connection.
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
@@ -8,6 +9,7 @@ const connection = mysql.createConnection({
   database: "casinoDB"
 });
 
+// Make connection.
 connection.connect(err => {
   if (err) {
     console.error(`Error Connecting: ${err.stack}`);
@@ -16,4 +18,5 @@ connection.connect(err => {
   console.log(`Connected as ID ${connection.threadId}`);
 });
 
+// Export connection for our ORM to use.
 module.exports = connection;
