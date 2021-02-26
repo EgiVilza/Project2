@@ -26,6 +26,19 @@ const orm = {
       }
       cb(result);
     });
+  },
+  updateScore(id, newScore, cb) {
+    let queryString = "UPDATE players SET balance = ";
+    queryString += newScore;
+    queryString += " WHERE id = ";
+    queryString += id;
+    console.log(queryString);
+    connection.query(queryString, (err, result) => {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
   }
 };
 
