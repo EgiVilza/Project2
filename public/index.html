@@ -26,12 +26,20 @@
     <form class="betForm">
         <label for="bet">Bet:</label>
         <input type="number" id="bet" name="bet">
-        <input type="submit" class="btn btn-danger" value="Place Bet">
+        <input type="submit" class="btn btn-danger" id="placeBet" value="Place Bet">
     </form>
 
     <button type="button" class="btn btn-warning hitButton">Hit</button>
     <button type="button" class="btn btn-warning stayButton">Stay</button>
     <button type="button" class="btn btn-warning finishButton">Finish</button>
 
+    <input type="text" id="betAmount">
+
+    <div>
+        <label for="amountLeft">Amount Left:</label>
+        <input type="number" id="amountLeft" name="amountLeft" value=5000>
+    </div>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./js/view.js" type="text/javascript"></script>
 </body>
