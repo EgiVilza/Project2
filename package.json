@@ -24,6 +24,7 @@
   "dependencies": {
     "express": "^4.17.0",
     "mysql2": "^1.6.5",
+    "express-handlebars": "^3.0.0",
     "sequelize": "^5.8.6"
   },
   "devDependencies": {
@@ -33,6 +34,7 @@
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.2",
+    "handlebars-helper-css": "^0.1.0",
     "mocha": "^5.2.0",
     "prettier": "^1.13.7"
   }
