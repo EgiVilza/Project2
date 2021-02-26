@@ -8,31 +8,30 @@
   margin-left: 50px;
 }
 
-body {
-  color: green;
-}
-
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: url("../Images/blackjack_background2.jpg");
   /* Set a specific height */
-  height: 50%;
-  /* Position and center the image to scale nicely on all screens */
   width: 100%;
-  height: 70%;
+  height: 75%;
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   position: relative;
 }
 
-.betAmountButton {
-  width: 80px;
+.betForm {
+  margin: 0 auto;
+  width: 50%;
 }
 
-.placeBetButton {
-  width: 130px;
-  position: absolute;
-  margin: 50%;
+@media only screen and (max-width: 550px) {
+  .hero-image {
+    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+    background-image: url("../Images/blackjack_small.jpg");
+    /* Position and center the image to scale nicely on all screens */
+    width: 100%;
+    height: 70%;
+    background-position: center;
+    position: relative;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

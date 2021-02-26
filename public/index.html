@@ -21,18 +21,17 @@
 
 <body>
     <!--Hero Image-->
-    <div class="hero-image">
-        <button type="button" class="btn btn-warning placeBetButton">Place Bet</button>
+    <div class="hero-image"></div>
 
-        <button type="button" class="btn btn-warning">Hit</button>
-        <button type="button" class="btn btn-warning">Stay</button>
-    </div>
+    <form class="betForm">
+        <label for="bet">Bet:</label>
+        <input type="number" id="bet" name="bet">
+        <input type="submit" class="btn btn-danger" value="Place Bet">
+    </form>
 
-    <button type="button" class="btn btn-primary betAmountButton">$ 1</button>
-    <button type="button" class="btn btn-secondary betAmountButton">$ 5</button>
-    <button type="button" class="btn btn-success betAmountButton">$ 10</button>
-    <button type="button" class="btn btn-danger betAmountButton">$ 20</button>
-    <button type="button" class="btn btn-warning betAmountButton">$ 100</button>
+    <button type="button" class="btn btn-warning hitButton">Hit</button>
+    <button type="button" class="btn btn-warning stayButton">Stay</button>
+    <button type="button" class="btn btn-warning finishButton">Finish</button>
 
     
 </body>
