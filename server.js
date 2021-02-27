@@ -1,28 +1,32 @@
-const express = require("express");
+// Dependencies
+const express = require('express');
+const exphbs = require('express-handlebars');
 
+// Create an instance of the express app.
+const app = express();
+app.use('/public', express.static('public'))
+
+// Set the port of our application
+// process.env.PORT lets the port be set by Heroku
 const PORT = process.env.PORT || 8080;
 
-const app = express();
-
-// Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static("public"));
 
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Set Handlebars.
-const exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+// Set Handlebars as the default templating engine.
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
 
-// Import routes and give the server access to them.
-const routes = require("./controllers/casino_controller.js");
+const routes = require('./controllers/casinoController.js')
 
 app.use(routes);
 
 // Start our server so that it can begin listening to client requests.
-app.listen(PORT, () => {
-  console.log(`Server listening on: http://localhost:${PORT}`);
-});
+// Log (server-side) when our server has started
+app.listen(PORT, () =>
+  console.log(`Server listening on: http://localhost:${PORT}`)
+);
+
