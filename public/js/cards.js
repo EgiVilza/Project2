@@ -51,7 +51,7 @@ class deck {
 }
 
 //Generates a random integer from 0 up to the value of randomMax.
-function randomUpTo(randomMax) {
+function randomUpTo(randomMax) {}
 
 //Class for card agent
 class cardAgent {
@@ -151,4 +151,4 @@ class dealer extends cardAgent {
   }
 }
 
-module.exports = { card, deck, cardAgent, player, dealer };
+//module.exports = { card, deck, cardAgent, player, dealer };

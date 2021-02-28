@@ -9,6 +9,7 @@ const connection = mysql.createConnection({
   database: "casinoDB"
 });
 
+//Grant's Pass: ny4u&PK*Tbv7
 // Make connection.
 connection.connect(err => {
   if (err) {

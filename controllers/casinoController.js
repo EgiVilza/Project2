@@ -1,6 +1,6 @@
 const express = require("express");
 const orm = require("../config/orm.js");
-const { card, deck, cardAgent, player, dealer } = require("../cards.js");
+const { card, deck, cardAgent, player, dealer } = require("../public/js/cards.js");
 const router = express.Router();
 
 // // Import the model (cat.js) to use its database functions.
