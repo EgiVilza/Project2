@@ -1,8 +1,19 @@
+.betAmountDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #betAmount {
     border-radius: 50%;
     width: 170px;
     height: 170px;
     padding: 10px;
+
+    //position: absolute;
+    left: 50%;
+    right: 50%;
+    //margin: auto;
 
     background: #fff;
     border: 2px solid #666;

@@ -1,3 +1,7 @@
+.navBar {
+  background-color: white;
+}
+
 #scoreBoardLink {
   position: absolute;
   right: 0px;
@@ -8,7 +12,7 @@
   margin-left: 50px;
 }
 
-.hero-image {
+body {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: url("../Images/background.jpg");
   width: 100%;
@@ -22,11 +26,25 @@
   width: 50%;
 }
 
+.betAmountDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 #betAmount {
   border-radius: 50%;
   width: 170px;
   height: 170px;
   padding: 10px;
+  left: 50%;
+  right: 50%;
   background: #fff;
   border: 2px solid #666;
   color: #666;
