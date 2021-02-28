@@ -10,4 +10,3 @@ CREATE TABLE players (
     name VARCHAR(30) NOT NULL,
     balance INT NOT NULL
 );
-
