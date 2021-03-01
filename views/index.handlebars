@@ -1,5 +1,5 @@
     <!--Hero Image-->
-    <div class="hero-image">
+    <div>
       <br>
       <div class="container">
 
@@ -16,28 +16,20 @@
         </div>
 
         <div class="row">
-          <div class="col playersHand">Player's Hand</div>
+          <div class="col playersHandText">Player's Hand</div>
           <div class="col"></div>
-          <div class="col dealersHand">Dealer's Hand</div>
+          <div class="col dealersHandText">Dealer's Hand</div>
         </div>
 
         <div class="row">
-          <div class="col cards">
-            <img src="/Public/Images/CardFaces/2club.png" width="90px" height="180px">
-            <img src="/Public/Images/CardFaces/2club.png" width="90px" height="180px">
-            <img src="/Public/Images/CardFaces/2club.png" width="90px" height="180px">
-            <img src="/Public/Images/CardFaces/2club.png" width="90px" height="180px">
-            <img src="/Public/Images/CardFaces/2club.png" width="90px" height="180px">
+          <div class="col cards playersHand">
           </div>
-          <div class="col betAmountDiv">
-            <input type="text" class="" id="betAmount" value=0>
+          <div class="col">
+            <div class="betAmountDiv">
+              <input type="text" id="betAmount" value=0>
+            </div>
           </div>
-          <div class="col cards">
-            <img src="/Public/Images/CardFaces/2club.png" width="90px" height="180px">
-            <img src="/Public/Images/CardFaces/2club.png" width="90px" height="180px">
-            <img src="/Public/Images/CardFaces/2club.png" width="90px" height="180px">
-            <img src="/Public/Images/CardFaces/2club.png" width="90px" height="180px">
-            <img src="/Public/Images/CardFaces/2club.png" width="90px" height="180px">
+          <div class="col cards dealersHand">
           </div>
         </div>
       </div>
@@ -49,19 +41,27 @@
 
       <div class="row">
         <div class="col">
-          <label for="amountLeft">Amount Left:</label>
+          <label for="amountLeft">Amount Left:</label><br>
           <input type="number" id="amountLeft" name="amountLeft" value=5000>
         </div>
         <form class="betForm col">
-          <label for="bet">Bet:</label>
+          <label for="bet">Bet:</label><br>
           <input type="number" id="bet" name="bet">
           <input type="submit" class="btn btn-danger" id="placeBet" value="Place Bet">
         </form>
-        <div class="col">
+        <div class="col"><br>
           <button type="button" class="btn btn-warning hitButton col-auto">Hit</button>
           <button type="button" class="btn btn-warning stayButton col-auto">Stay</button>
           <button type="button" class="btn btn-warning finishButton col-auto">Finish</button>
         </div>
+      </div><br><br>
+
+      <p class="gameText"></p>
+
+      <div class="row">
+        <div class="col"></div>
+        <button type="button" class="btn btn-warning resetButton col-auto">Next Round</button>
+        <div class="col"></div>
       </div>
 
     </div>

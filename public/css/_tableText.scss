@@ -13,17 +13,21 @@
     font-size: 35px;
 }
 
-.playersHand {
+.playersHandText {
     color: rgb(230, 86, 129);
     font-size: 35px;
     width: 600px;
     text-align: center;
 }
 
-.dealersHand {
+.dealersHandText {
     color: rgb(230, 86, 129);
     font-size: 35px;
     width: 600px;
+    text-align: center;
+}
+
+.gameText {
     text-align: center;
 }
 
@@ -36,11 +40,11 @@
         display: none;
     }
 
-    .playersHand {
+    .playersHandText {
         display: none;
     }
 
-    .dealersHand {
+    .dealersHandText {
         display: none;
     }
 }
