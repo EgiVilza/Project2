@@ -1,9 +1,11 @@
 //let name = prompt("Please enter your name");
 
 //Classes
-const ddeck = new deck(); //generatedDeck from the api
+let ddeck = new deck(); //generatedDeck from the api
 const dplayer = new player("Egi", 5000); //generatedPlayer from the api
-const ddealer = new dealer(); //generatedDealer from the api
+let ddealer = new dealer(); //generatedDealer from the api
+
+//Shuffle Deck
 ddeck.shuffle();
 
 //Place bet, Just needs "start game" function
@@ -68,12 +70,14 @@ const hit = e => {
 const stay = e => {
   e.preventDefault();
   dplayer.setStand();
+
   //Completes every dealer turn until dealer busts or decides to stand
   for (let z = 0; !ddealer.bust && !ddealer.stand; z++) {
     ddealer.dealerTurn(ddeck);
     renderDealersCards();
   }
 
+  //Result Conditions
   if (ddealer.bust) {
     //Player wins 2x bet
     dplayer.bank = dplayer.bank + dplayer.currentBet * 2;
@@ -95,9 +99,10 @@ const stay = e => {
 //Finish: End the game and post the Amount Left to the scoreboard
 const finish = e => {
   e.preventDefault();
-  const amountLeft = $("#amountLeft").val();
+
   const name = dplayer.name;
-  const score = { Name: name, Score: amountLeft };
+  //Records name and bank for leaderboard
+  const score = { Name: name, Score: dplayer.bank };
 
   //Return score to be added onto the leaderboard and the database
   return score;
@@ -106,8 +111,10 @@ const finish = e => {
 //Render Player's Cards
 const renderPlayersCards = () => {
   const playersHand = $(".playersHand");
+  //Empties current hand to re-display hand
   playersHand.empty();
 
+  //For each card in hand, create an image element and add the image source attribute
   dplayer.hand.forEach(element => {
     const cardImage = $("<img>");
     const imgSrc = "/Public/Images/CardFaces/" + element.image;
@@ -117,6 +124,7 @@ const renderPlayersCards = () => {
       class: "cards"
     });
 
+    //Append card image to the frontend
     playersHand.append(cardImage);
   });
 };
@@ -124,8 +132,10 @@ const renderPlayersCards = () => {
 //Render Dealer's Cards
 const renderDealersCards = () => {
   const dealersHand = $(".dealersHand");
+  //Empties current hand to re-display hand
   dealersHand.empty();
 
+  //For each card in hand, create an image element and add the image source attribute
   ddealer.hand.forEach(element => {
     const cardImage = $("<img>");
     const imgSrc = "/Public/Images/CardFaces/" + element.image;
@@ -135,6 +145,7 @@ const renderDealersCards = () => {
       class: "cards"
     });
 
+    //Append card image to the frontend
     dealersHand.append(cardImage);
   });
 };
@@ -147,33 +158,58 @@ const checkResults = () => {
     gameText("Bust");
   } else if (dplayer.score === 21) {
     const hand = dplayer.hand;
+
+    //Multiplier variable
     let betMultiplier = 1.5;
 
+    //If player gets BlackJack with 2 cards in hand, get 1.5x the bet, else 2x the bet
     if (hand.length === 2) {
-      betMultiplier = 2;
-    } else {
       betMultiplier = 1.5;
+    } else {
+      betMultiplier = 2;
     }
 
+    //Update player bank
     dplayer.bank = dplayer.bank + dplayer.currentBet * betMultiplier;
+    //Display text
     gameText("BlackJack");
   }
 };
 
+//Refreshes the player's and dealer's stats and refreshes the game board
 const nextRound = () => {
+  //Refresh the front end values
   $(".playersHand").empty();
   $(".dealersHand").empty();
   $("#bet").val(0);
   $("#betAmount").val(0);
+
+  //Update amount left
   $("#amountLeft").val(dplayer.bank);
+
+  //Reset player's current bet
   dplayer.currentBet = 0;
+
+  //Reset bust property
   dplayer.bust = false;
-  ddealer.bust = false;
+
+  //Empties player's hand
   dplayer.hand = [];
-  ddealer.hand = [];
+
+  //Refresh game text
   gameText("");
+
+  //New Deck
+  ddeck = new deck();
+
+  //Shuffle Deck
+  ddeck.shuffle();
+
+  //New Dealer (This is to refresh the dealer's hand)
+  ddealer = new dealer();
 };
 
+//Function to change the game text based on the result of the game
 const gameText = text => {
   $(".gameText").text(text);
 };
