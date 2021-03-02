@@ -12,6 +12,9 @@ ddeck.shuffle();
 const bet = e => {
   e.preventDefault();
 
+  //Remove Rules
+  $(".displayToggle").css({ display: "none" });
+
   //Bet Amount from the front end
   const betAmount = parseInt($("#bet").val());
 
@@ -81,18 +84,18 @@ const stay = e => {
   if (ddealer.bust) {
     //Player wins 2x bet
     dplayer.bank = dplayer.bank + dplayer.currentBet * 2;
-    gameText("Dealer Bust, gain 2x the bet");
+    gameText("Dealer Busted!!! Gain 2x the bet");
   } else if (dplayer.score > ddealer.score) {
     //Player wins 2x bet
     dplayer.bank = dplayer.bank + dplayer.currentBet * 2;
-    gameText("Player wins, gain 2x the bet");
+    gameText("Player wins! Gain 2x the bet");
   } else if (dplayer.score === ddealer.score) {
     //Nobody wins, player gets bet back
     dplayer.bank = dplayer.bank + dplayer.currentBet;
-    gameText("Tie");
+    gameText("Tie. Player keeps the bet");
   } else {
     //Player loses because dealer has a higher score, player loses the bet
-    gameText("Dealer Scored Higher, lost bet");
+    gameText("Dealer Scored Higher. Whomp Whomp, Player loses the bet");
   }
 };
 
@@ -155,7 +158,7 @@ const checkResults = () => {
   //Check if player bust or hits BlackJack
   if (dplayer.bust) {
     //Player's hand busted, player loses bet, round is over
-    gameText("Bust");
+    gameText("Busted!");
   } else if (dplayer.score === 21) {
     const hand = dplayer.hand;
 
@@ -172,7 +175,7 @@ const checkResults = () => {
     //Update player bank
     dplayer.bank = dplayer.bank + dplayer.currentBet * betMultiplier;
     //Display text
-    gameText("BlackJack");
+    gameText("BlackJack!!!");
   }
 };
 
@@ -183,6 +186,9 @@ const nextRound = () => {
   $(".dealersHand").empty();
   $("#bet").val(0);
   $("#betAmount").val(0);
+
+  //Display Rules
+  $(".displayToggle").css({ display: "" });
 
   //Update amount left
   $("#amountLeft").val(dplayer.bank);
@@ -207,11 +213,15 @@ const nextRound = () => {
 
   //New Dealer (This is to refresh the dealer's hand)
   ddealer = new dealer();
+
+  //Add id attribute to remove button
+  $(".resetButton").attr("id", "resetBtn");
 };
 
 //Function to change the game text based on the result of the game
 const gameText = text => {
   $(".gameText").text(text);
+  $("#resetBtn").removeAttr("id");
 };
 
 //Button "click" Event Listeners

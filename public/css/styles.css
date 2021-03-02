@@ -1,5 +1,5 @@
 .navBar {
-  background-color: white;
+  background-color: rgba(3, 110, 3, 0.849);
 }
 
 #scoreBoardLink {
@@ -12,18 +12,39 @@
   margin-left: 50px;
 }
 
-body {
-  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: url("../Images/background.jpg");
-  width: 100%;
-  height: 80%;
-  background-position: center;
-  background-size: cover;
+.homeTitle {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 35px;
+  color: #ffe600;
+}
+
+.scoreboardTitle {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 35px;
+  color: #ffe600;
+}
+
+#resetBtn {
+  display: none;
 }
 
 .cards {
   width: 90px;
   height: 180px;
+}
+
+@media (max-width: 1200px) {
+  .cards {
+    width: 60px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 900px) {
+  .cards {
+    width: 45px;
+    height: 90px;
+  }
 }
 
 .betForm {
@@ -102,6 +123,19 @@ body {
 
 .gameText {
   text-align: center;
+  font-size: 50px;
+}
+
+#bankText {
+  font-size: 20px;
+}
+
+#betText {
+  font-size: 20px;
+}
+
+.rules {
+  color: black;
 }
 
 @media (max-width: 500px) {
@@ -111,11 +145,13 @@ body {
   .tableTitle {
     display: none;
   }
-  .playersHandText {
-    display: none;
-  }
-  .dealersHandText {
-    display: none;
-  }
+}
+
+body {
+  background-image: url("../Images/background.jpg");
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
 }
 /*# sourceMappingURL=styles.css.map */

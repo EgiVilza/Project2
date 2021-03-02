@@ -2,3 +2,18 @@
     width: 90px;
     height: 180px;
 }
+
+//Decrease card dimensions as the width decreases
+@media (max-width: 1200px) {
+    .cards {
+        width: 60px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 900px) {
+    .cards {
+        width: 45px;
+        height: 90px;
+    }
+}
