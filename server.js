@@ -18,9 +18,10 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-const routes = require("./controllers/casinoController.js");
+app.use(express.static("public"));
 
-app.use(routes);
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
 // Start our server so that it can begin listening to client requests.
 // Log (server-side) when our server has started
