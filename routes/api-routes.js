@@ -2,18 +2,6 @@ const Casino = require("../models/casino.js");
 
 // Routes
 module.exports = app => {
-  // Get all scores - ordered by balance
-  app.get("/api/leaderboard", (req, res) => {
-    // Finding all scores, and then returning them to the user as JSON.
-    // Sequelize queries are asynchronous and results are available to us inside the .then
-    Casino.findAll({
-      attributes: ["id", "name", "balance"],
-      order: [["balance", "DESC"]]
-    }).then(results => {
-      res.json(results);
-    });
-  });
-
   app.post("/api/leaderboard", (req, res) => {
     console.log(req.body);
     Casino.findAll({
