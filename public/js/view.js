@@ -99,12 +99,25 @@ const stay = e => {
 //Finish: End the game and post the Amount Left to the scoreboard
 const finish = e => {
   e.preventDefault();
-
-  const name = dplayer.name;
   //Records name and bank for leaderboard
-  const score = { Name: name, Score: dplayer.bank };
+  const score = {
+    name: dplayer.name,
+    balance: dplayer.bank
+  };
 
-  //Return score to be added onto the leaderboard and the database
+  fetch("/api/leaderboard", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(score)
+  })
+    .then(response => response.json())
+    .catch(error => {
+      console.error("Error:", error);
+    });
+
+  console.log(score);
   return score;
 };
 
