@@ -17,10 +17,20 @@ module.exports = app => {
     //render template through handlebars
     Casino.findAll({
       attributes: ["name", "balance"],
-      order: [["balance", "DESC"]]
+      order: [["balance", "DESC"]],
+      raw: true
     }).then(results => {
-      console.log(results);
-      const scoreObject = results;
+      let j = 1;
+      for (const i of results) {
+        i.order = j;
+        j++;
+      }
+      const scoreObject = {
+        players: results
+      };
+      console.log(scoreObject);
+
+      // const scoreObject = results;
       res.render("leaderboard", scoreObject);
     });
   });
