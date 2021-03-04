@@ -1,4 +1,4 @@
 USE casinoDB;
 
 INSERT INTO players (name, balance)
-VALUES ("Player 1", 100), ("Player 2", 90), ("Player 3", 215), ("Player 4", 10);
+VALUES ("Ken", 5000), ("Pam", 900), ("Pat", 6000), ("Ren", 1000);
