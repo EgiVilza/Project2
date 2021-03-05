@@ -123,11 +123,12 @@
 
 .gameText {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
 }
 
 #bankText {
   font-size: 20px;
+  pointer-events: none;
 }
 
 #betText {
@@ -136,6 +137,10 @@
 
 .rules {
   color: black;
+}
+
+#amountLeft {
+  pointer-events: none;
 }
 
 @media (max-width: 500px) {

@@ -72,31 +72,12 @@ const hit = e => {
 //Stay: Play with the cards you have
 const stay = e => {
   e.preventDefault();
+
+  //Update player stand to true
   dplayer.setStand();
 
-  //Completes every dealer turn until dealer busts or decides to stand
-  for (let z = 0; !ddealer.bust && !ddealer.stand; z++) {
-    ddealer.dealerTurn(ddeck);
-    renderDealersCards();
-  }
-
-  //Result Conditions
-  if (ddealer.bust) {
-    //Player wins 2x bet
-    dplayer.bank = dplayer.bank + dplayer.currentBet * 2;
-    gameText("Dealer Busted!!! Gain 2x the bet");
-  } else if (dplayer.score > ddealer.score) {
-    //Player wins 2x bet
-    dplayer.bank = dplayer.bank + dplayer.currentBet * 2;
-    gameText("Player wins! Gain 2x the bet");
-  } else if (dplayer.score === ddealer.score) {
-    //Nobody wins, player gets bet back
-    dplayer.bank = dplayer.bank + dplayer.currentBet;
-    gameText("Tie. Player keeps the bet");
-  } else {
-    //Player loses because dealer has a higher score, player loses the bet
-    gameText("Dealer Scored Higher. Whomp Whomp, Player loses the bet");
-  }
+  //Check Results
+  checkResults();
 };
 
 //Finish: End the game and post the Amount Left to the scoreboard
@@ -107,6 +88,7 @@ const finish = e => {
   //Records name and bank for leaderboard
   const score = { Name: name, Score: dplayer.bank };
 
+  alert("Score is added to leaderboard");
   //Return score to be added onto the leaderboard and the database
   return score;
 };
@@ -155,27 +137,53 @@ const renderDealersCards = () => {
 
 //Check if player/dealer busted/won/tie
 const checkResults = () => {
-  //Check if player bust or hits BlackJack
-  if (dplayer.bust) {
-    //Player's hand busted, player loses bet, round is over
-    gameText("Busted!");
-  } else if (dplayer.score === 21) {
-    const hand = dplayer.hand;
-
-    //Multiplier variable
-    let betMultiplier = 1.5;
-
-    //If player gets BlackJack with 2 cards in hand, get 1.5x the bet, else 2x the bet
-    if (hand.length === 2) {
-      betMultiplier = 1.5;
-    } else {
-      betMultiplier = 2;
+  //If player stand is true
+  if (dplayer.stand) {
+    //Completes every dealer turn until dealer busts or decides to stand
+    for (let z = 0; !ddealer.bust && !ddealer.stand; z++) {
+      ddealer.dealerTurn(ddeck);
+      renderDealersCards();
     }
 
-    //Update player bank
-    dplayer.bank = dplayer.bank + dplayer.currentBet * betMultiplier;
-    //Display text
-    gameText("BlackJack!!!");
+    //Result Conditions
+    if (ddealer.bust) {
+      //Player wins 2x bet
+      dplayer.bank = dplayer.bank + dplayer.currentBet * 2;
+      gameText("Dealer Busted!!! Gain 2x the bet");
+    } else if (dplayer.score > ddealer.score) {
+      //Player wins 2x bet
+      dplayer.bank = dplayer.bank + dplayer.currentBet * 2;
+      gameText("Player wins! Gain 2x the bet");
+    } else if (dplayer.score === ddealer.score) {
+      //Nobody wins, player gets bet back
+      dplayer.bank = dplayer.bank + dplayer.currentBet;
+      gameText("Tie. Player keeps the bet");
+    } else {
+      //Player loses because dealer has a higher score, player loses the bet
+      gameText("Dealer Scored Higher :(. Player loses the bet");
+    }
+  } else {
+    if (dplayer.bust) {
+      //Player's hand busted, player loses bet, round is over
+      gameText("Busted!");
+    } else if (dplayer.score === 21) {
+      const hand = dplayer.hand;
+
+      //Multiplier variable
+      let betMultiplier = 1.5;
+
+      //If player gets BlackJack with 2 cards in hand, get 1.5x the bet, else 2x the bet
+      if (hand.length === 2) {
+        betMultiplier = 1.5;
+      } else {
+        betMultiplier = 2;
+      }
+
+      //Update player bank
+      dplayer.bank = dplayer.bank + dplayer.currentBet * betMultiplier;
+      //Display text
+      gameText("BlackJack!!!");
+    }
   }
 };
 
@@ -195,6 +203,9 @@ const nextRound = () => {
 
   //Reset player's current bet
   dplayer.currentBet = 0;
+
+  //Reset player's stand to false
+  dplayer.stand = false;
 
   //Reset bust property
   dplayer.bust = false;
