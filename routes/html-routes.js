@@ -21,10 +21,25 @@ module.exports = app => {
       raw: true
     }).then(results => {
       let j = 1;
+      const checkTie = [];
       for (const i of results) {
         i.order = j;
         j++;
+        checkTie.push(i.balance);
       }
+      console.log(checkTie);
+
+      for (i = 0; i < checkTie.length; i++) {
+        if (checkTie[i] === checkTie[i + 1]) {
+          if (typeof results[i].order === "string") {
+            results[i + 1].order = results[i].order;
+          } else {
+            results[i].order = "T-" + [i + 1];
+            results[i + 1].order = results[i].order;
+          }
+        }
+      }
+
       const scoreObject = {
         players: results
       };
