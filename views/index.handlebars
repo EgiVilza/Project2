@@ -1,41 +1,75 @@
-    <!--Hero Image-->
-    <div>
-      <br>
-      <div class="container">
+<!--Navigation Bar-->
+<nav class="navBar">
+  <ul class="nav">
+    <li class="nav-item" id="homePageLink">
+      <a class="nav-link active" aria-current="page" href="#">Black Jack Casino</a>
+    </li>
+    <li class="nav-item" id="scoreBoardLink">
+      <a class="nav-link" href="/leaderboard">Leaderboard</a>
+    </li>
+  </ul>
+</nav>
 
-        <div class="row">
-          <div class="col"></div>
-          <div class="tableTitle col-auto">BLACKJACK PAYS 3 TO 2</div>
-          <div class="col"></div>
-        </div>
-
-        <div class="row">
-          <div class="col"></div>
-          <div class="tableText col-auto">INSURANCE PAYS 2 TO 1</div>
-          <div class="col"></div>
-        </div>
-
-        <div class="row">
-          <div class="col playersHandText">Player's Hand</div>
-          <div class="col"></div>
-          <div class="col dealersHandText">Dealer's Hand</div>
-        </div>
-
-        <div class="row">
-          <div class="col cards playersHand">
-          </div>
-          <div class="col">
-            <div class="betAmountDiv">
-              <input type="text" id="betAmount" value=0>
-            </div>
-          </div>
-          <div class="col cards dealersHand">
-          </div>
-        </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
+  </div>
+</div>
 
-    <br>
+<!--Hero Image-->
+<div>
+  <br>
+  <div class="container">
+
+    <div class="row">
+      <div class="col"></div>
+      <div class="tableTitle col-auto">BLACKJACK PAYS 3 TO 2</div>
+      <div class="col"></div>
+    </div>
+
+    <div class="row">
+      <div class="col"></div>
+      <div class="tableText col-auto">INSURANCE PAYS 2 TO 1</div>
+      <div class="col"></div>
+    </div>
+
+    <div class="row">
+      <div class="col playersHandText">Player's Hand</div>
+      <div class="col"></div>
+      <div class="col dealersHandText">Dealer's Hand</div>
+    </div>
+
+    <div class="row">
+      <div class="col cards playersHand">
+      </div>
+      <div class="col">
+        <div class="betAmountDiv">
+          <input type="text" id="betAmount" value=0>
+        </div>
+      </div>
+      <div class="col cards dealersHand">
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
 
     <p class="gameText"></p>
 
@@ -84,8 +118,31 @@
           
         </div>
       </div>
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+      <label for="amountLeft">Amount Left:</label><br>
+      <h2 id="amountLeft">5000</h2>
+      <button type="button" class="btn btn-primary disabled finishButton col-auto">Submit Score</button>
 
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/public/js/cards.js" type="text/javascript"></script>
-    <script src="/public/js/view.js" type="text/javascript"></script>
+    <form class="betForm col">
+      <label for="bet">Bet:</label><br>
+      <input type="number" id="bet" name="bet">
+      <input type="submit" class="btn btn-danger" id="placeBet" value="Place Bet">
+    </form>
+    <div class="col"><br>
+      <button type="button" class="btn btn-warning hitButton col-auto">Hit</button>
+      <button type="button" class="btn btn-warning stayButton col-auto">Stay</button>
+      <button type="button" class="btn btn-warning resetButton col-auto">Next Round</button>
+
+    </div>
+  </div><br><br>
+
+  <p class="gameText"></p>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/public/js/cards.js" type="text/javascript"></script>
+<script src="/public/js/view.js" type="text/javascript"></script>

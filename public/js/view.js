@@ -26,13 +26,22 @@ const bet = e => {
     alert("Must add bet");
     return;
   }
+  //Hide Submit Score button
+  if (!$(".finishButton")[0].classList.contains("disabled")) {
+    $(".finishButton")[0].classList.add("disabled");
+  }
+
+  // if ($(".finishButton").classList.contains("disabled")) {
+  //   console.log("Removing Button");
+  //   $(".finishButton").classList.add("disabled");
+  // }
 
   //Update Current Bet
   dplayer.currentBet = betAmount;
 
   //Updates amount left after bet has been placed
   dplayer.bank = dplayer.bank - betAmount;
-  $("#amountLeft").val(dplayer.bank);
+  $("#amountLeft").text(dplayer.bank);
 
   //Updates bet amount on the front end
   $("#betAmount").val(dplayer.currentBet);
@@ -83,13 +92,33 @@ const stay = e => {
 //Finish: End the game and post the Amount Left to the scoreboard
 const finish = e => {
   e.preventDefault();
-
-  const name = dplayer.name;
   //Records name and bank for leaderboard
+<<<<<<< HEAD
   const score = { Name: name, Score: dplayer.bank };
 
   alert("Score is added to leaderboard");
   //Return score to be added onto the leaderboard and the database
+=======
+  const score = {
+    name: dplayer.name,
+    balance: dplayer.bank
+  };
+
+  fetch("/api/leaderboard", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(score)
+  })
+    .then(response => {
+      response.json();
+      window.location.href = "./leaderboard";
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
+>>>>>>> 8aa0966d38b61206dbcfcb174d0db2e4acb66a34
   return score;
 };
 
@@ -199,7 +228,7 @@ const nextRound = () => {
   $(".displayToggle").css({ display: "" });
 
   //Update amount left
-  $("#amountLeft").val(dplayer.bank);
+  $("#amountLeft").text(dplayer.bank);
 
   //Reset player's current bet
   dplayer.currentBet = 0;
@@ -227,6 +256,8 @@ const nextRound = () => {
 
   //Add id attribute to remove button
   $(".resetButton").attr("id", "resetBtn");
+  // Show submit button
+  $(".finishButton")[0].classList.remove("disabled");
 };
 
 //Function to change the game text based on the result of the game
