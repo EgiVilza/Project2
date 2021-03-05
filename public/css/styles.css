@@ -28,23 +28,17 @@
   display: none;
 }
 
+.buttons {
+  margin-left: 10%;
+}
+
+.hitButton {
+  margin-right: 20px;
+}
+
 .cards {
   width: 90px;
-  height: 150px;
-}
-
-@media (max-width: 1200px) {
-  .cards {
-    width: 60px;
-    height: 120px;
-  }
-}
-
-@media (max-width: 900px) {
-  .cards {
-    width: 45px;
-    height: 90px;
-  }
+  height: 120px;
 }
 
 .betForm {
@@ -143,6 +137,10 @@
   pointer-events: none;
 }
 
+.amountText {
+  margin-left: 10%;
+}
+
 @media (max-width: 500px) {
   .tableText {
     display: none;
@@ -158,5 +156,9 @@ body {
   height: 100%;
   background-position: center;
   background-size: cover;
+}
+
+.displayNone {
+  display: none;
 }
 /*# sourceMappingURL=styles.css.map */

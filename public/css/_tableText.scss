@@ -1,3 +1,4 @@
+//Table text Styles
 .tableTitle {
     color: rgb(230, 86, 129);
     font-size: 35px;
@@ -49,6 +50,10 @@
     pointer-events: none;
 }
 
+.amountText {
+    margin-left: 10%;
+}
+
 @media (max-width: 500px) {
     .tableText {
         display: none;
@@ -57,12 +62,4 @@
     .tableTitle {
         display: none;
     }
-
-    // .playersHandText {
-    //     display: none;
-    // }
-
-    // .dealersHandText {
-    //     display: none;
-    // }
 }
