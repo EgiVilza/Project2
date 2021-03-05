@@ -71,6 +71,53 @@
 
 <br>
 
+    <p class="gameText"></p>
+
+      <div class="row">
+        <div class="col"></div>
+        <button type="button" class="btn btn-warning resetButton col-auto" id="resetBtn">Next Round</button>
+        <div class="col"></div>
+      </div><br>
+    <div class="container pageInteraction">
+
+      <div class="row">
+        <div class="col">
+          <ol class="displayToggle rules">
+            <h3>Rules:</h3>
+            <li>
+              The goal of blackjack is to beat the dealer's hand without going over 21.
+            </li>
+            <li>
+              Face cards are worth 10. Aces are worth 1 or 11, whichever makes a better hand.
+            </li>
+            <li>
+              Press 'Hit' to draw a card. Press 'Stand' is to hold your total.
+            </li>
+            <li>
+              If you go over 21 you bust, and the dealer wins.
+            </li>
+            <li>
+              If you are dealt 21 from the start (Ace & 10), get 1.5x the bet.
+            </li>
+            <li>
+              If dealer's hand reaches 17 points, dealer will not draw more cards and end his turn.
+            </li>
+          </ol>
+        </div>
+        <form class="betForm col">
+          <label for="bet" id="betText">Bet:</label><br>
+          <input type="number" id="bet" name="bet">
+          <input type="submit" class="btn btn-danger" id="placeBet" value="Place Bet">
+        </form>
+        <div class="col">
+          <label for="amountLeft" id="bankText">Amount Left:</label><br>
+          <input type="number" id="amountLeft" name="amountLeft" value=5000><br><br>
+          <button type="button" class="btn btn-warning hitButton col-auto">Hit</button>
+          <button type="button" class="btn btn-warning stayButton col-auto">Stay</button>
+          <button type="button" class="btn btn-warning finishButton col-auto">Finish</button><br><br>
+          
+        </div>
+      </div>
 <div class="container">
 
   <div class="row">

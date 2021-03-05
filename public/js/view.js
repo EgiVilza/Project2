@@ -12,6 +12,9 @@ ddeck.shuffle();
 const bet = e => {
   e.preventDefault();
 
+  //Remove Rules
+  $(".displayToggle").css({ display: "none" });
+
   //Bet Amount from the front end
   const betAmount = parseInt($("#bet").val());
 
@@ -78,37 +81,24 @@ const hit = e => {
 //Stay: Play with the cards you have
 const stay = e => {
   e.preventDefault();
+
+  //Update player stand to true
   dplayer.setStand();
 
-  //Completes every dealer turn until dealer busts or decides to stand
-  for (let z = 0; !ddealer.bust && !ddealer.stand; z++) {
-    ddealer.dealerTurn(ddeck);
-    renderDealersCards();
-  }
-
-  //Result Conditions
-  if (ddealer.bust) {
-    //Player wins 2x bet
-    dplayer.bank = dplayer.bank + dplayer.currentBet * 2;
-    gameText("Dealer Bust, gain 2x the bet");
-  } else if (dplayer.score > ddealer.score) {
-    //Player wins 2x bet
-    dplayer.bank = dplayer.bank + dplayer.currentBet * 2;
-    gameText("Player wins, gain 2x the bet");
-  } else if (dplayer.score === ddealer.score) {
-    //Nobody wins, player gets bet back
-    dplayer.bank = dplayer.bank + dplayer.currentBet;
-    gameText("Tie");
-  } else {
-    //Player loses because dealer has a higher score, player loses the bet
-    gameText("Dealer Scored Higher, lost bet");
-  }
+  //Check Results
+  checkResults();
 };
 
 //Finish: End the game and post the Amount Left to the scoreboard
 const finish = e => {
   e.preventDefault();
   //Records name and bank for leaderboard
+<<<<<<< HEAD
+  const score = { Name: name, Score: dplayer.bank };
+
+  alert("Score is added to leaderboard");
+  //Return score to be added onto the leaderboard and the database
+=======
   const score = {
     name: dplayer.name,
     balance: dplayer.bank
@@ -128,6 +118,7 @@ const finish = e => {
     .catch(error => {
       console.error("Error:", error);
     });
+>>>>>>> 8aa0966d38b61206dbcfcb174d0db2e4acb66a34
   return score;
 };
 
@@ -175,27 +166,53 @@ const renderDealersCards = () => {
 
 //Check if player/dealer busted/won/tie
 const checkResults = () => {
-  //Check if player bust or hits BlackJack
-  if (dplayer.bust) {
-    //Player's hand busted, player loses bet, round is over
-    gameText("Bust");
-  } else if (dplayer.score === 21) {
-    const hand = dplayer.hand;
-
-    //Multiplier variable
-    let betMultiplier = 1.5;
-
-    //If player gets BlackJack with 2 cards in hand, get 1.5x the bet, else 2x the bet
-    if (hand.length === 2) {
-      betMultiplier = 1.5;
-    } else {
-      betMultiplier = 2;
+  //If player stand is true
+  if (dplayer.stand) {
+    //Completes every dealer turn until dealer busts or decides to stand
+    for (let z = 0; !ddealer.bust && !ddealer.stand; z++) {
+      ddealer.dealerTurn(ddeck);
+      renderDealersCards();
     }
 
-    //Update player bank
-    dplayer.bank = dplayer.bank + dplayer.currentBet * betMultiplier;
-    //Display text
-    gameText("BlackJack");
+    //Result Conditions
+    if (ddealer.bust) {
+      //Player wins 2x bet
+      dplayer.bank = dplayer.bank + dplayer.currentBet * 2;
+      gameText("Dealer Busted!!! Gain 2x the bet");
+    } else if (dplayer.score > ddealer.score) {
+      //Player wins 2x bet
+      dplayer.bank = dplayer.bank + dplayer.currentBet * 2;
+      gameText("Player wins! Gain 2x the bet");
+    } else if (dplayer.score === ddealer.score) {
+      //Nobody wins, player gets bet back
+      dplayer.bank = dplayer.bank + dplayer.currentBet;
+      gameText("Tie. Player keeps the bet");
+    } else {
+      //Player loses because dealer has a higher score, player loses the bet
+      gameText("Dealer Scored Higher :(. Player loses the bet");
+    }
+  } else {
+    if (dplayer.bust) {
+      //Player's hand busted, player loses bet, round is over
+      gameText("Busted!");
+    } else if (dplayer.score === 21) {
+      const hand = dplayer.hand;
+
+      //Multiplier variable
+      let betMultiplier = 1.5;
+
+      //If player gets BlackJack with 2 cards in hand, get 1.5x the bet, else 2x the bet
+      if (hand.length === 2) {
+        betMultiplier = 1.5;
+      } else {
+        betMultiplier = 2;
+      }
+
+      //Update player bank
+      dplayer.bank = dplayer.bank + dplayer.currentBet * betMultiplier;
+      //Display text
+      gameText("BlackJack!!!");
+    }
   }
 };
 
@@ -207,11 +224,17 @@ const nextRound = () => {
   $("#bet").val(0);
   $("#betAmount").val(0);
 
+  //Display Rules
+  $(".displayToggle").css({ display: "" });
+
   //Update amount left
   $("#amountLeft").text(dplayer.bank);
 
   //Reset player's current bet
   dplayer.currentBet = 0;
+
+  //Reset player's stand to false
+  dplayer.stand = false;
 
   //Reset bust property
   dplayer.bust = false;
@@ -231,6 +254,8 @@ const nextRound = () => {
   //New Dealer (This is to refresh the dealer's hand)
   ddealer = new dealer();
 
+  //Add id attribute to remove button
+  $(".resetButton").attr("id", "resetBtn");
   // Show submit button
   $(".finishButton")[0].classList.remove("disabled");
 };
@@ -238,6 +263,7 @@ const nextRound = () => {
 //Function to change the game text based on the result of the game
 const gameText = text => {
   $(".gameText").text(text);
+  $("#resetBtn").removeAttr("id");
 };
 
 //Button "click" Event Listeners

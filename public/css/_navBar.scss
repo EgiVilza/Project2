@@ -1,5 +1,8 @@
 .navBar {
-    background-color: white;
+    background-color: rgba(3, 110, 3, 0.849);
+    //border-style: solid;
+    //border-color: rgb(121, 79, 24);
+    
 }
 
 #scoreBoardLink {
@@ -10,4 +13,16 @@
 
 #homePageLink {
     margin-left: 50px;
+}
+
+.homeTitle {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 35px;
+    color: rgb(255, 230, 0);
+}
+
+.scoreboardTitle {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 35px;
+    color: rgb(255, 230, 0);
 }
