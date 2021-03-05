@@ -23,13 +23,24 @@ const bet = e => {
     alert("Must add bet");
     return;
   }
+  //Hide Submit Score button
+
+  if (!$(".finishButton")[0].classList.contains("disabled")) {
+    console.log("Disabling Button");
+    $(".finishButton")[0].classList.add("disabled");
+  }
+
+  // if ($(".finishButton").classList.contains("disabled")) {
+  //   console.log("Removing Button");
+  //   $(".finishButton").classList.add("disabled");
+  // }
 
   //Update Current Bet
   dplayer.currentBet = betAmount;
 
   //Updates amount left after bet has been placed
   dplayer.bank = dplayer.bank - betAmount;
-  $("#amountLeft").val(dplayer.bank);
+  $("#amountLeft").text(dplayer.bank);
 
   //Updates bet amount on the front end
   $("#betAmount").val(dplayer.currentBet);
@@ -112,12 +123,13 @@ const finish = e => {
     },
     body: JSON.stringify(score)
   })
-    .then(response => response.json())
+    .then(response => {
+      response.json();
+      window.location.href = "./leaderboard";
+    })
     .catch(error => {
       console.error("Error:", error);
     });
-
-  console.log(score);
   return score;
 };
 
@@ -198,7 +210,7 @@ const nextRound = () => {
   $("#betAmount").val(0);
 
   //Update amount left
-  $("#amountLeft").val(dplayer.bank);
+  $("#amountLeft").text(dplayer.bank);
 
   //Reset player's current bet
   dplayer.currentBet = 0;
@@ -220,6 +232,9 @@ const nextRound = () => {
 
   //New Dealer (This is to refresh the dealer's hand)
   ddealer = new dealer();
+
+  // Show submit button
+  $(".finishButton")[0].classList.remove("disabled");
 };
 
 //Function to change the game text based on the result of the game

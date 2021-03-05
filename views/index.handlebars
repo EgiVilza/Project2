@@ -11,7 +11,8 @@
 </nav>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -75,7 +76,9 @@
   <div class="row">
     <div class="col">
       <label for="amountLeft">Amount Left:</label><br>
-      <input type="number" id="amountLeft" name="amountLeft" value=5000>
+      <h2 id="amountLeft">5000</h2>
+      <button type="button" class="btn btn-primary disabled finishButton col-auto">Submit Score</button>
+
     </div>
     <form class="betForm col">
       <label for="bet">Bet:</label><br>
@@ -91,16 +94,6 @@
   </div><br><br>
 
   <p class="gameText"></p>
-
-  <div class="row">
-    <div class="col"></div>
-    <form class="nameForm col">
-      <label for="name">Name:</label><br>
-      <input type="text" id="name" name="name">
-      <button type="button" class="btn btn-primary finishButton col-auto">Submit Score</button>
-    </form>
-    <div class="col"></div>
-  </div>
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
