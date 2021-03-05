@@ -24,9 +24,7 @@ const bet = e => {
     return;
   }
   //Hide Submit Score button
-
   if (!$(".finishButton")[0].classList.contains("disabled")) {
-    console.log("Disabling Button");
     $(".finishButton")[0].classList.add("disabled");
   }
 
