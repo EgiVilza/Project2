@@ -1,5 +1,3 @@
-//let name = prompt("Please enter your name");
-
 //Classes
 let ddeck = new deck(); //generatedDeck from the api
 const dplayer = new player("Egi", 5000); //generatedPlayer from the api
@@ -7,6 +5,21 @@ let ddealer = new dealer(); //generatedDealer from the api
 
 //Shuffle Deck
 ddeck.shuffle();
+
+//Enter player's name and start the game
+const startGame = e => {
+  e.preventDefault();
+
+  //Store player name in a const variable and udpate the player class
+  const playerName = $("#name").val();
+  dplayer.name = playerName;
+
+  //Hide rules and name
+  $(".pageInteraction").attr("class", "displayNone");
+
+  //Start Game
+  $(".startGame").removeAttr("class", "displayNone");
+};
 
 //Place bet, Just needs "start game" function
 const bet = e => {
@@ -26,15 +39,18 @@ const bet = e => {
     alert("Must add bet");
     return;
   }
+
   //Hide Submit Score button
   if (!$(".finishButton")[0].classList.contains("disabled")) {
     $(".finishButton")[0].classList.add("disabled");
   }
 
-  // if ($(".finishButton").classList.contains("disabled")) {
-  //   console.log("Removing Button");
-  //   $(".finishButton").classList.add("disabled");
-  // }
+  //Enable hit and stay buttons
+  $(".hitButton")[0].classList.remove("disabled");
+  $(".stayButton")[0].classList.remove("disabled");
+
+  //Disable place bet button
+  $("#placeBet")[0].classList.add("disabled");
 
   //Update Current Bet
   dplayer.currentBet = betAmount;
@@ -92,13 +108,8 @@ const stay = e => {
 //Finish: End the game and post the Amount Left to the scoreboard
 const finish = e => {
   e.preventDefault();
-  //Records name and bank for leaderboard
-<<<<<<< HEAD
-  const score = { Name: name, Score: dplayer.bank };
 
-  alert("Score is added to leaderboard");
   //Return score to be added onto the leaderboard and the database
-=======
   const score = {
     name: dplayer.name,
     balance: dplayer.bank
@@ -118,7 +129,6 @@ const finish = e => {
     .catch(error => {
       console.error("Error:", error);
     });
->>>>>>> 8aa0966d38b61206dbcfcb174d0db2e4acb66a34
   return score;
 };
 
@@ -189,7 +199,7 @@ const checkResults = () => {
       gameText("Tie. Player keeps the bet");
     } else {
       //Player loses because dealer has a higher score, player loses the bet
-      gameText("Dealer Scored Higher :(. Player loses the bet");
+      gameText("Dealer Scored Higher. Player loses the bet");
     }
   } else {
     if (dplayer.bust) {
@@ -254,8 +264,16 @@ const nextRound = () => {
   //New Dealer (This is to refresh the dealer's hand)
   ddealer = new dealer();
 
+  //Disable hit and stay buttons
+  $(".hitButton")[0].classList.add("disabled");
+  $(".stayButton")[0].classList.add("disabled");
+
+  //Enable place bet button
+  $("#placeBet")[0].classList.remove("disabled");
+
   //Add id attribute to remove button
   $(".resetButton").attr("id", "resetBtn");
+
   // Show submit button
   $(".finishButton")[0].classList.remove("disabled");
 };
@@ -272,3 +290,4 @@ $(".hitButton").on("click", hit);
 $(".stayButton").on("click", stay);
 $(".finishButton").on("click", finish);
 $(".resetButton").on("click", nextRound);
+$("#submitName").on("click", startGame);
