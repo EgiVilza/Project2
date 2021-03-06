@@ -13,6 +13,36 @@ const startGame = e => {
   //Store player name in a const variable and udpate the player class
   const playerName = $("#name").val();
   dplayer.name = playerName;
+  // Alert player if nothing is entered in name input
+  if (playerName === "") {
+    alert("Please enter a name to continue");
+    location.reload();
+  }
+  // Run GET request to see if name already exists on leaderboard
+  fetch("/api/leaderboard", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  }).then((response) => response.json())
+    .then(data => {
+      // Check if the entered name exists in the database
+      const checkName = [];
+      for (const i of data) {
+        checkName.push(i.name)
+      }
+      // Alert the player that the name is in use
+      if (checkName.includes(playerName)) {
+        nameConfirm = confirm("This name is already in use! If you continue, the current score associated with the name will be overwritten.\nClick Okay to continue, or Cancel to return.");
+        if (nameConfirm) {
+          return
+        } else {
+          location.reload();
+        }
+      } else {
+        return
+      }
+    });
 
   //Hide rules and name
   $(".pageInteraction").attr("class", "displayNone");

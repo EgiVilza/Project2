@@ -6,13 +6,11 @@ const {
   player,
   dealer
 } = require("../public/js/cards.js");
-
 // Routes
 module.exports = app => {
   app.get("/", (req, res) => {
     res.render("index");
   });
-
   app.get("/leaderboard", (req, res) => {
     //render template through handlebars
     Casino.findAll({
@@ -27,8 +25,6 @@ module.exports = app => {
         j++;
         checkTie.push(i.balance);
       }
-      console.log(checkTie);
-
       for (i = 0; i < checkTie.length; i++) {
         if (checkTie[i] === checkTie[i + 1]) {
           if (typeof results[i].order === "string") {
@@ -39,17 +35,13 @@ module.exports = app => {
           }
         }
       }
-
       const scoreObject = {
         players: results
       };
-      console.log(scoreObject);
-
       // const scoreObject = results;
       res.render("leaderboard", scoreObject);
     });
   });
-
   app.get("/startUp", (req, res) => {
     // generate new deck
     const generatedDeck = new deck();
