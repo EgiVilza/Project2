@@ -22,7 +22,6 @@ if (process.env.JAWDB_URL) {
   });
 }
 
-
 //Grant's ny4u&PK*Tbv7
 // Exports the connection for other files to use
 module.exports = sequelize;
