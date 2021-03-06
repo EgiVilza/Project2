@@ -2,6 +2,15 @@ const Casino = require("../models/casino.js");
 
 // Routes
 module.exports = app => {
+  app.get("/api/leaderboard", (req, res) => {
+    Casino.findAll({
+      attributes: ["name"],
+      raw: true
+    }).then(results => {
+      res.json(results);
+    });
+  });
+
   app.post("/api/leaderboard", (req, res) => {
     console.log(req.body);
     Casino.findAll({
