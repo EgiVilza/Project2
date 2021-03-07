@@ -8,6 +8,8 @@ Play a game of BlackJack against the house. Start the game with 5000 in the bank
 
 * [Installation](#installation)
 
+* [Video](#video)
+
 * [License](#license)
 
 * [Contributing](contributing)
@@ -25,6 +27,10 @@ To install necessary dependencies, run the following command:
 ''
 npm i
 ''
+
+## Video
+
+Video Link: https://drive.google.com/file/d/1OJEWKk87SSMcJdO2Evk3VavPq6sN40v0/view
 
 ## License
 
