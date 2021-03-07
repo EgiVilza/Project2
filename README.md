@@ -30,7 +30,7 @@ npm i
 
 ## Video
 
-Video Link: https://drive.google.com/file/d/1OJEWKk87SSMcJdO2Evk3VavPq6sN40v0/view
+Video Link: https://drive.google.com/file/d/1gNp3-aFsfN4p1X5qIHFrtILm7UIg1F0k/view
 
 ## License
 
