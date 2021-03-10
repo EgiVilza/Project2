@@ -21,9 +21,6 @@ module.exports = app => {
   });
   app.post("/api/leaderboard", (req, res) => {
     console.log(req.body);
-    console.log(req.body.name);
-    console.log(req.body.balance);
-
     db.players
       .findAll({
         where: {
@@ -35,22 +32,23 @@ module.exports = app => {
         console.log(results);
         if (results.length === 0) {
           db.players
-            .create({
-              name: req.body.name,
-              balance: req.body.balance
-            })
+            .create(req.body)
             .then(results => res.json(results))
             .catch(err => handleError(err));
         } else {
+          const playerName = {};
+          playerName.name = req.body.name;
+          const whereClause = {};
+          whereClause.where = playerName;
+
+          const newScore = {};
+          newScore.balance = req.body.balance;
+
+          console.log(newScore);
+          console.log(whereClause);
+
           db.players
-            .update(
-              { balance: req.body.balance },
-              {
-                where: {
-                  name: req.body.name
-                }
-              }
-            )
+            .update(newScore, whereClause)
             .then(results => res.json(results))
             .catch(err => handleError(err));
         }
