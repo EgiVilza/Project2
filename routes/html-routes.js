@@ -16,7 +16,8 @@ module.exports = app => {
     db.players
       .findAll({
         attributes: ["name", "balance"],
-        order: [["balance", "DESC"]]
+        order: [["balance", "DESC"]],
+        raw: true
       })
       .then(results => {
         let j = 1;
