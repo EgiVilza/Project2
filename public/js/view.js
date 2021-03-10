@@ -19,7 +19,7 @@ const startGame = e => {
     location.reload();
   }
   // Run GET request to see if name already exists on leaderboard
-  fetch("/api/leaderboard", {
+  fetch(`/api/leaderboard/${playerName}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json"
@@ -27,13 +27,8 @@ const startGame = e => {
   })
     .then(response => response.json())
     .then(data => {
-      // Check if the entered name exists in the database
-      const checkName = [];
-      for (const i of data) {
-        checkName.push(i.name);
-      }
-      // Alert the player that the name is in use
-      if (checkName.includes(playerName)) {
+      // Alert the player if the name they entered is in use
+      if (data) {
         nameConfirm = confirm(
           "This name is already in use! If you continue, the current score associated with the name will be overwritten.\nClick Okay to continue, or Cancel to return."
         );
