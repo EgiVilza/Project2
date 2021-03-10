@@ -33,7 +33,10 @@ module.exports = app => {
         if (results.length === 0) {
           db.players
             .create(req.body)
-            .then(results => res.json(results))
+            .then(results => {
+              console.log(results);
+              res.json(results);
+            })
             .catch(err => handleError(err));
         } else {
           const playerName = {};
@@ -49,7 +52,10 @@ module.exports = app => {
 
           db.players
             .update(newScore, whereClause)
-            .then(results => res.json(results))
+            .then(results => {
+              console.log(results);
+              res.json(results);
+            })
             .catch(err => handleError(err));
         }
       });
