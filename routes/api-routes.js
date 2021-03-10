@@ -2,14 +2,16 @@ const db = require("../models");
 
 // Routes
 module.exports = app => {
-  app.get("/api/leaderboard", (req, res) => {
+  app.get("/api/leaderboard/:name", (req, res) => {
     db.players
       .findAll({
         attributes: ["name"],
+        where: {
+          name: req.params.name
+        },
         raw: true
       })
       .then(results => {
-        console.log(results);
         res.json(results);
       });
   });
