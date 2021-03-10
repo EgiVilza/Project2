@@ -314,6 +314,10 @@ const nextRound = () => {
 const gameText = text => {
   $(".gameText").text(text);
   $("#resetBtn").removeAttr("id");
+
+  //Disable hit and stay buttons
+  $(".hitButton")[0].classList.add("disabled");
+  $(".stayButton")[0].classList.add("disabled");
 };
 
 //Button "click" Event Listeners
