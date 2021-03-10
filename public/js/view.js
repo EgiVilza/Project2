@@ -23,24 +23,26 @@ const startGame = e => {
     method: "GET",
     headers: {
       "Content-Type": "application/json"
-    },
-  }).then((response) => response.json())
+    }
+  })
+    .then(response => response.json())
     .then(data => {
       // Check if the entered name exists in the database
       const checkName = [];
       for (const i of data) {
-        checkName.push(i.name)
+        checkName.push(i.name);
       }
       // Alert the player that the name is in use
       if (checkName.includes(playerName)) {
-        nameConfirm = confirm("This name is already in use! If you continue, the current score associated with the name will be overwritten.\nClick Okay to continue, or Cancel to return.");
+        nameConfirm = confirm(
+          "This name is already in use! If you continue, the current score associated with the name will be overwritten.\nClick Okay to continue, or Cancel to return."
+        );
         if (nameConfirm) {
-          return
-        } else {
-          location.reload();
+          return;
         }
+        location.reload();
       } else {
-        return
+        return;
       }
     });
 

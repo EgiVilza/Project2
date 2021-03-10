@@ -39,6 +39,7 @@
     "eslint-plugin-prettier": "^2.6.2",
     "handlebars-helper-css": "^0.1.0",
     "mocha": "^5.2.0",
-    "prettier": "^1.13.7"
+    "prettier": "^1.13.7",
+    "sequelize-cli": "^6.2.0"
   }
 }
