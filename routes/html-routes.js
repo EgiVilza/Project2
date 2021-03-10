@@ -40,6 +40,7 @@ module.exports = app => {
         const scoreObject = {
           players: results
         };
+        console.log(scoreObject);
         res.render("leaderboard", scoreObject);
       });
   });
