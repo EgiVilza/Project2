@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "ny4u&PK*Tbv7",
+    "password": "",
     "database": "casinoDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
