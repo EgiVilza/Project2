@@ -12,7 +12,11 @@ module.exports = app => {
         raw: true
       })
       .then(results => {
-        res.json(results);
+        if (results.length === 0) {
+          res.json(false);
+        } else {
+          res.json(true);
+        }
       });
   });
   app.post("/api/leaderboard", (req, res) => {
