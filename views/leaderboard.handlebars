@@ -16,9 +16,9 @@
             <tbody class="tableTitle">
                 {{#each players}}
                 <tr>
-                    <td>{{players.order}}</td>
-                    <td>{{players.name}}</td>
-                    <td>${{players.balance}}</td>
+                    <td>{{this.order}}</td>
+                    <td>{{this.name}}</td>
+                    <td>${{this.balance}}</td>
                 </tr>
                 {{/each}}
             </tbody>
