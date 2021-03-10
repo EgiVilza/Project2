@@ -20,10 +20,13 @@ module.exports = app => {
       });
   });
   app.post("/api/leaderboard", (req, res) => {
+    console.log(req.body);
+    const newScore = req.body.balance;
+    const playerName = req.body.name;
     db.players
       .findAll({
         where: {
-          name: req.body.name
+          name: playerName
         },
         raw: true
       })
@@ -32,17 +35,17 @@ module.exports = app => {
         if (results.length === 0) {
           db.players
             .create({
-              name: req.body.name,
-              balance: req.body.balance
+              name: playerName,
+              balance: newScore
             })
             .then(results => res.json(results));
         } else {
           db.players
             .update(
-              { balance: req.body.balance },
+              { balance: newScore },
               {
                 where: {
-                  name: req.body.name
+                  name: playerName
                 }
               }
             )
