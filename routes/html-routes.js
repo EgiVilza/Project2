@@ -5,7 +5,7 @@ const {
   // cardAgent,
   player,
   dealer
-} = require("../public/js/cards.js");
+} = require("../js/cards.js");
 // Routes
 module.exports = app => {
   app.get("/", (req, res) => {

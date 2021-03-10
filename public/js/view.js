@@ -173,7 +173,7 @@ const renderPlayersCards = () => {
   //For each card in hand, create an image element and add the image source attribute
   dplayer.hand.forEach(element => {
     const cardImage = $("<img>");
-    const imgSrc = "/Public/Images/CardFaces/" + element.image;
+    const imgSrc = "/Images/CardFaces/" + element.image;
 
     cardImage.attr({
       src: imgSrc,
@@ -194,7 +194,7 @@ const renderDealersCards = () => {
   //For each card in hand, create an image element and add the image source attribute
   ddealer.hand.forEach(element => {
     const cardImage = $("<img>");
-    const imgSrc = "/Public/Images/CardFaces/" + element.image;
+    const imgSrc = "/Images/CardFaces/" + element.image;
 
     cardImage.attr({
       src: imgSrc,
