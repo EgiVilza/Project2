@@ -1,4 +1,4 @@
-const Casino = require("../models/casino.js");
+const db = require("../models");
 const {
   // card,
   deck,
@@ -13,10 +13,9 @@ module.exports = app => {
   });
   app.get("/leaderboard", (req, res) => {
     //render template through handlebars
-    Casino.findAll({
+    db.Casino.findAll({
       attributes: ["name", "balance"],
-      order: [["balance", "DESC"]],
-      raw: true
+      order: [["balance", "DESC"]]
     }).then(results => {
       let j = 1;
       const checkTie = [];
