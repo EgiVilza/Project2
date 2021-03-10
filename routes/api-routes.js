@@ -20,7 +20,6 @@ module.exports = app => {
       });
   });
   app.post("/api/leaderboard", (req, res) => {
-    console.log(req.body);
     db.players
       .findAll({
         where: {
@@ -29,33 +28,25 @@ module.exports = app => {
         raw: true
       })
       .then(results => {
-        console.log(results);
         if (results.length === 0) {
           db.players
-            .create(req.body)
-            .then(results => {
-              console.log(results);
-              res.json(results);
+            .create({
+              name: req.body.name,
+              balance: req.body.balance
             })
+            .then(results => res.json(results))
             .catch(err => handleError(err));
         } else {
-          const playerName = {};
-          playerName.name = req.body.name;
-          const whereClause = {};
-          whereClause.where = playerName;
-
-          const newScore = {};
-          newScore.balance = req.body.balance;
-
-          console.log(newScore);
-          console.log(whereClause);
-
           db.players
-            .update(newScore, whereClause)
-            .then(results => {
-              console.log(results);
-              res.json(results);
-            })
+            .update(
+              { balance: req.body.balance },
+              {
+                where: {
+                  name: req.body.name
+                }
+              }
+            )
+            .then(results => res.json(results))
             .catch(err => handleError(err));
         }
       });

@@ -139,7 +139,7 @@ const finish = e => {
   //Return score to be added onto the leaderboard and the database
   const score = {
     name: dplayer.name,
-    balance: dplayer.bank
+    balance: parseInt(dplayer.bank)
   };
 
   fetch("/api/leaderboard", {
