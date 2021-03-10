@@ -28,6 +28,7 @@ module.exports = app => {
         raw: true
       })
       .then(results => {
+        console.log(results);
         if (results.length === 0) {
           db.players
             .create({
