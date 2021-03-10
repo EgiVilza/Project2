@@ -13,7 +13,6 @@ module.exports = app => {
   });
   app.get("/leaderboard", (req, res) => {
     //render template through handlebars
-    console.log(db);
     db.players
       .findAll({
         attributes: ["name", "balance"],
@@ -40,7 +39,7 @@ module.exports = app => {
         const scoreObject = {
           players: results
         };
-        // const scoreObject = results;
+        console.log(scoreObject);
         res.render("leaderboard", scoreObject);
       });
   });

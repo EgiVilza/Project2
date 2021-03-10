@@ -8,7 +8,10 @@ module.exports = app => {
         attributes: ["name"],
         raw: true
       })
-      .then(results => res.json(results));
+      .then(results => {
+        console.log(results);
+        res.json(results);
+      });
   });
   app.post("/api/leaderboard", (req, res) => {
     db.players
