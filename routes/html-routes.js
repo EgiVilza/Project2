@@ -13,33 +13,36 @@ module.exports = app => {
   });
   app.get("/leaderboard", (req, res) => {
     //render template through handlebars
-    db.Casino.findAll({
-      attributes: ["name", "balance"],
-      order: [["balance", "DESC"]]
-    }).then(results => {
-      let j = 1;
-      const checkTie = [];
-      for (const i of results) {
-        i.order = j;
-        j++;
-        checkTie.push(i.balance);
-      }
-      for (i = 0; i < checkTie.length; i++) {
-        if (checkTie[i] === checkTie[i + 1]) {
-          if (typeof results[i].order === "string") {
-            results[i + 1].order = results[i].order;
-          } else {
-            results[i].order = "T-" + [i + 1];
-            results[i + 1].order = results[i].order;
+    console.log(db);
+    db.players
+      .findAll({
+        attributes: ["name", "balance"],
+        order: [["balance", "DESC"]]
+      })
+      .then(results => {
+        let j = 1;
+        const checkTie = [];
+        for (const i of results) {
+          i.order = j;
+          j++;
+          checkTie.push(i.balance);
+        }
+        for (i = 0; i < checkTie.length; i++) {
+          if (checkTie[i] === checkTie[i + 1]) {
+            if (typeof results[i].order === "string") {
+              results[i + 1].order = results[i].order;
+            } else {
+              results[i].order = "T-" + [i + 1];
+              results[i + 1].order = results[i].order;
+            }
           }
         }
-      }
-      const scoreObject = {
-        players: results
-      };
-      // const scoreObject = results;
-      res.render("leaderboard", scoreObject);
-    });
+        const scoreObject = {
+          players: results
+        };
+        // const scoreObject = results;
+        res.render("leaderboard", scoreObject);
+      });
   });
   app.get("/startUp", (req, res) => {
     // generate new deck

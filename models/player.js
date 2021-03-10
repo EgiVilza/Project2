@@ -1,6 +1,6 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const Casino = sequelize.define("players", {
+  const Player = sequelize.define("players", {
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -10,5 +10,5 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     }
   });
-  return Casino;
+  return Player;
 };
