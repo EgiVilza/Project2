@@ -6,27 +6,36 @@ Play a game of BlackJack against the house. Start the game with 5000 in the bank
 
 # Table of Contents
 
+* [Screenshot](#screenshot)
+
 * [Installation](#installation)
+
+* [Built With](#builtwith)
 
 * [Video](#video)
 
 * [License](#license)
 
-* [Contributing](contributing)
+## Screenshot
 
-* [Usage](#usage)
-
-* [Tests](#tests)
-
-* [Questions](#questions)
+![alt text](public/Images/BlackJackCasino.png)
 
 ## Installation
 
 To install necessary dependencies, run the following command:
 
-''
-npm i
-''
+'
+ npm i
+'
+
+## Built With
+
+* Javascript
+* Node.js
+* Node Express
+* Node Handlebars
+* Eslint
+* Sequelize
 
 ## Video
 
@@ -34,26 +43,7 @@ Video Link: https://drive.google.com/file/d/1gNp3-aFsfN4p1X5qIHFrtILm7UIg1F0k/vi
 
 ## License
 
-This projects is licensed under the None license.
+This projects is licensed under the MIT license.
 
-## Contributing
 
-NA
-
-## Usage
-
-The repo is for a group coding project.
-
-## Tests
-
-To run tests, rund the following command:
-
-''
-NA
-''
-
-## Questions
-
-If you have any questions about the repo, open an issue or contact me at egivilza@email.com.
-You can find more of my work at: [egivilza](https://github.com/egivilza).
 
