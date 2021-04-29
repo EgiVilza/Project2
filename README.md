@@ -18,15 +18,15 @@ Play a game of BlackJack against the house. Start the game with 5000 in the bank
 
 ## Screenshot
 
-![alt text](public/Images/BlackJackCasino.png)
+![alt text](/public/Images/BlackJackCasino.png)
 
 ## Installation
 
 To install necessary dependencies, run the following command:
 
-'
+''
  npm i
-'
+''
 
 ## Built With
 
