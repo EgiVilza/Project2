@@ -10,7 +10,9 @@ Play a game of BlackJack against the house. Start the game with $5,000 in the ba
 
 * [Installation](#installation)
 
-* [Built With](#builtwith)
+* [Built With](#built-with)
+
+* [Heroku Link](#heroku-link)
 
 * [Video](#video)
 
@@ -37,6 +39,10 @@ To install necessary dependencies, run the following command:
 * Eslint
 * Sequelize
 
+## Heroku Link
+
+Heroku Link: https://frozen-wildwood-18963.herokuapp.com/
+
 ## Video
 
 Video Link: https://drive.google.com/file/d/1gNp3-aFsfN4p1X5qIHFrtILm7UIg1F0k/view
@@ -44,6 +50,4 @@ Video Link: https://drive.google.com/file/d/1gNp3-aFsfN4p1X5qIHFrtILm7UIg1F0k/vi
 ## License
 
 This projects is licensed under the MIT license.
-
-
 
