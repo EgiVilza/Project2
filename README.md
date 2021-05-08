@@ -2,7 +2,7 @@
 
 ## Description
 
-Play a game of BlackJack against the house. Start the game with 5000 in the bank, once the player is finished with playing the game, they have the option to add their name and score to the leaderboard after each round. If the player lost everything in the bank, bank is set back to the default amount.
+Play a game of BlackJack against the house. Start the game with $5,000 in the bank, once the player is finished with playing the game, they have the option to add their name and score to the leaderboard after each round. If the player lost everything in the bank, bank is set back to the default amount.
 
 # Table of Contents
 
